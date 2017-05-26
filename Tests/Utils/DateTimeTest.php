@@ -1,8 +1,8 @@
 <?php
 
-namespace Test\BHC\PlanningBundle\Utils;
+namespace Test\Roshyo\PlanningBundle\Utils;
 
-use BHC\PlanningBundle\Utils\DateTime;
+use Roshyo\PlanningBundle\Utils\DateTime;
 use PHPUnit\Framework\TestCase;
 
 class DateTimeTest extends TestCase

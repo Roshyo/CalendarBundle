@@ -1,9 +1,9 @@
 <?php
 
-namespace Test\BHC\PlanningBundle\Calendar\Items;
+namespace Test\Roshyo\PlanningBundle\Calendar\Items;
 
-use BHC\PlanningBundle\Calendar\Items\ConcreteItem;
-use BHC\PlanningBundle\Utils\DateTime;
+use Roshyo\PlanningBundle\Calendar\Items\ConcreteItem;
+use Roshyo\PlanningBundle\Utils\DateTime;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase

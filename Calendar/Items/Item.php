@@ -1,9 +1,9 @@
 <?php
 
-namespace BHC\PlanningBundle\Calendar\Items;
+namespace Roshyo\PlanningBundle\Calendar\Items;
 
-use BHC\PlanningBundle\Calendar\Resources\Resource;
-use BHC\PlanningBundle\Utils\DateTime;
+use Roshyo\PlanningBundle\Calendar\Resources\Resource;
+use Roshyo\PlanningBundle\Utils\DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 abstract class Item

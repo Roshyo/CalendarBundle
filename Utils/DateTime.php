@@ -1,6 +1,6 @@
 <?php
 
-namespace BHC\PlanningBundle\Utils;
+namespace Roshyo\PlanningBundle\Utils;
 
 class DateTime extends \DateTime
 {

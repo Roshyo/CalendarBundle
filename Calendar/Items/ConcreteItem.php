@@ -1,6 +1,6 @@
 <?php
 
-namespace BHC\PlanningBundle\Calendar\Items;
+namespace Roshyo\PlanningBundle\Calendar\Items;
 
 class ConcreteItem extends Item
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace BHC\PlanningBundle\Calendar\Resources;
+namespace Roshyo\PlanningBundle\Calendar\Resources;
 
 class ConcreteResource extends Resource
 {

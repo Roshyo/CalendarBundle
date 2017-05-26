@@ -1,6 +1,6 @@
 <?php
 
-namespace BHC\PlanningBundle\Calendar;
+namespace Roshyo\PlanningBundle\Calendar;
 
 class Calendar
 {

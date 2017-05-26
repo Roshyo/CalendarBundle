@@ -1,14 +1,14 @@
 <?php
 
-namespace Test\BHC\PlanningBundle\Calendar\Resources;
+namespace Test\Roshyo\PlanningBundle\Calendar\Resources;
 
 use AppBundle\Entity\DayOff;
 use AppBundle\Entity\Employee;
 use AppBundle\Entity\EmployeeDayOff;
 use AppBundle\Entity\EmployeeTraining;
-use BHC\PlanningBundle\Calendar\Items\ConcreteItem;
-use BHC\PlanningBundle\Calendar\Resources\ConcreteResource;
-use BHC\PlanningBundle\Utils\DateTime;
+use Roshyo\PlanningBundle\Calendar\Items\ConcreteItem;
+use Roshyo\PlanningBundle\Calendar\Resources\ConcreteResource;
+use Roshyo\PlanningBundle\Utils\DateTime;
 use PHPUnit\Framework\TestCase;
 
 class ResourceTest extends TestCase
