@@ -1,5 +1,6 @@
 {
   "name": "roshyo/planning-bundle",
+  "type": "symfony-bundle",
   "description": "Provides all planning methods for integration in Symfony 3",
   "license": "MIT",
   "authors": [
