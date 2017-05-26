@@ -1,5 +1,5 @@
 {
-    "name": "Roshyo/PlanningBundle",
+    "name": "roshyo/planning-bundle",
     "description": "Provides all planning methods for integration in Symfony 3",
     "require": {
         "php": "^7.0",
