@@ -99,7 +99,7 @@ namespace AppBundle\Entity;
 
 use Roshyo\PlanningBundle\Calendar\Items\Item;
 
-class Employee extends Item
+class Meeting extends Item
 {
   ...
 ```
@@ -109,7 +109,7 @@ class Employee extends Item
 // src/AppBundle/Entity/EmployeeDayOff.php
 namespace AppBundle\Entity;
 
-class Employee
+class EmployeeDayOff
 {
   /**
    * @return DayOff
@@ -125,7 +125,7 @@ namespace AppBundle\Entity;
 
 use Roshyo\PlanningBundle\Calendar\Items\Item;
 
-class Employee extends Item
+class DayOff extends Item
 {
   ...
 ```
