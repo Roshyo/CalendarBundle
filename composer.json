@@ -1,9 +1,20 @@
 {
-    "name": "roshyo/planning-bundle",
-    "description": "Provides all planning methods for integration in Symfony 3",
-    "require": {
-        "php": "^7.0",
-        "doctrine/doctrine-bundle": "^1.6",
-        "symfony/symfony": "3.*"
+  "name": "roshyo/planning-bundle",
+  "description": "Provides all planning methods for integration in Symfony 3",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stéphane DECOCK"
     }
+  ],
+  "require": {
+    "php": "^7.0",
+    "doctrine/doctrine-bundle": "^1.6",
+    "symfony/symfony": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Roshyo\\PlanningBundle\\": ""
+    }
+  }
 }
