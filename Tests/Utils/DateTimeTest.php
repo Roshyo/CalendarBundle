@@ -2,8 +2,8 @@
 
 namespace Test\Roshyo\PlanningBundle\Utils;
 
-use Roshyo\PlanningBundle\Utils\DateTime;
 use PHPUnit\Framework\TestCase;
+use Roshyo\PlanningBundle\Utils\DateTime;
 
 class DateTimeTest extends TestCase
 {
@@ -39,6 +39,6 @@ class DateTimeTest extends TestCase
 		$fromDate = new \DateTime('2017-05-20 09:00:00');
 		$toDate = new \DateTime('2017-05-25 08:00:00');
 		
-		$this->assertEquals(6, count(DateTime::getConcernedDays($fromDate, $toDate)));
+		$this->assertEquals(6, count(DateTime::getDatesBetween($fromDate, $toDate)));
 	}
 }

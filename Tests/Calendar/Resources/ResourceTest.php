@@ -6,10 +6,10 @@ use AppBundle\Entity\DayOff;
 use AppBundle\Entity\Employee;
 use AppBundle\Entity\EmployeeDayOff;
 use AppBundle\Entity\EmployeeTraining;
+use PHPUnit\Framework\TestCase;
 use Roshyo\PlanningBundle\Calendar\Items\ConcreteItem;
 use Roshyo\PlanningBundle\Calendar\Resources\ConcreteResource;
 use Roshyo\PlanningBundle\Utils\DateTime;
-use PHPUnit\Framework\TestCase;
 
 class ResourceTest extends TestCase
 {

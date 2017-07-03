@@ -2,9 +2,8 @@
 
 namespace Roshyo\PlanningBundle\Calendar\Resources;
 
-use Roshyo\PlanningBundle\Calendar\Items\Item;
-use Roshyo\PlanningBundle\Utils\DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Roshyo\PlanningBundle\Calendar\Items\Item;
 
 abstract class Resource
 {
@@ -138,11 +137,11 @@ abstract class Resource
 	/**
 	 * Returns true if the resource is busy for the asked DateTime, false otherwise
 	 *
-	 * @param DateTime $askedDate
+	 * @param \DateTime $askedDate
 	 *
 	 * @return bool
 	 */
-	public function isBusy(DateTime $askedDate)
+	public function isBusy(\DateTime $askedDate)
 	{
 		//By default, resource is not busy
 		$isBusy = false;
@@ -152,8 +151,58 @@ abstract class Resource
 		foreach($this->items as $item){
 			//If the asked date is in those concerned by the item
 			$isBusy = $item->concernsDate($askedDate);
+			if($isBusy)
+				return true;
 		}
 		
 		return $isBusy;
+	}
+	
+	/**
+	 * @param \DateTime $askedDate
+	 * @param bool $firstHalf
+	 *
+	 * @return bool
+	 */
+	public function isBusyHalf(\DateTime $askedDate, $firstHalf = true)
+	{
+		if($firstHalf)
+			$askedDate->setTime(10, 0);
+		else
+			$askedDate->setTime(16, 0);
+		
+		//By default, resource is not busy
+		$isBusy = false;
+		
+		//For each item
+		/** @var Item $item */
+		foreach($this->items as $item){
+			//If the asked date is in those concerned by the item
+			$isBusy = $item->concernsDate($askedDate);
+			if($isBusy)
+				return true;
+		}
+		
+		return $isBusy;
+	}
+	
+	/**
+	 * Returns the list of items concerning this day
+	 *
+	 * @param \DateTime $askedDate
+	 *
+	 * @return array|Item[]
+	 */
+	public function getItemsThisDay(\DateTime $askedDate)
+	{
+		$items = [];
+		
+		foreach($this->items as $item){
+			if($item->concernsDate($askedDate)){
+				$items[] = $item;
+			}
+		}
+		
+		return $items;
 	}
 }

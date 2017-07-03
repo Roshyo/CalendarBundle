@@ -2,9 +2,9 @@
 
 namespace Roshyo\PlanningBundle\Calendar\Items;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Roshyo\PlanningBundle\Calendar\Resources\Resource;
 use Roshyo\PlanningBundle\Utils\DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 
 abstract class Item
 {
@@ -16,19 +16,23 @@ abstract class Item
 	protected $excludedDays;
 	/** @var Resource|null */
 	protected $resource;
+	/** @var  string */
+	protected $type = 'item';
 	
 	/**
 	 * Item constructor.
 	 * @param DateTime|null $fromDate
 	 * @param DateTime|null $toDate
+	 * @param string $type
 	 * @param ArrayCollection|null $excludedDays
 	 * @param Resource|null $resource
 	 */
-	public function __construct(DateTime $fromDate = null, DateTime $toDate = null,
+	public function __construct(DateTime $fromDate = null, DateTime $toDate = null, $type = '',
 	                            ArrayCollection $excludedDays = null, Resource $resource = null)
 	{
 		$this->fromDate = $fromDate;
 		$this->toDate = $toDate;
+		$this->type = $type;
 		$this->excludedDays = $excludedDays !== null ? $excludedDays : new ArrayCollection();
 		$this->resource = $resource;
 	}
@@ -114,8 +118,8 @@ abstract class Item
 		if($this->toDate <= $item->getFromDate() || $item->getToDate() <= $this->fromDate)
 			return false;
 		
-		$concernedDaysByThis = DateTime::getConcernedDays($this->fromDate, $this->toDate);
-		$concernedDaysByOther = DateTime::getConcernedDays($item->getFromDate(), $item->getToDate());
+		$concernedDaysByThis = DateTime::getDatesBetween($this->fromDate, $this->toDate);
+		$concernedDaysByOther = DateTime::getDatesBetween($item->getFromDate(), $item->getToDate());
 		//Fetch the days concerned by the two items
 		$concernedDaysUnion = [];
 		foreach($concernedDaysByThis as $day){
@@ -188,5 +192,13 @@ abstract class Item
 	public function getExcludedDays(): ArrayCollection
 	{
 		return $this->excludedDays;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getType()
+	{
+		return $this->type;
 	}
 }
