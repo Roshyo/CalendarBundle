@@ -12,54 +12,54 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getConfigTreeBuilder()
-	{
-		$treeBuilder = new TreeBuilder();
-		$rootNode = $treeBuilder->root('roshyo_planning');
-		
-		/*$rootNode
-			->children()
-				->arrayNode('resources')
-					->beforeNormalization()
-					->ifTrue(function ($v) { return is_array($v); })
-					->then(function ($v){
-						$resources = [];
-						foreach($v as $key => $value){
-							$resources[$key] = $v[$key];
-							unset($v[$key]);
-						}
-					})
-			->end()
-		;*/
-		
-		$rootNode
-			->children()
-			->append($this->createResourcesNode())
-			->end();
-		
-		return $treeBuilder;
-	}
-	
-	private function createResourcesNode()
-	{
-		$builder = new TreeBuilder();
-		$node = $builder->root('resources');
-		$node
-			->useAttributeAsKey('name')
-			->prototype('array')
-			->children()
-			->arrayNode('items')
-			->prototype('scalar')->end()
-			->end()
-			->scalarNode('class')
-			->defaultValue(null)
-			->end()
-			->end()
-			->end();
-		
-		return $node;
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('roshyo_planning');
+        
+        /*$rootNode
+            ->children()
+                ->arrayNode('resources')
+                    ->beforeNormalization()
+                    ->ifTrue(function ($v) { return is_array($v); })
+                    ->then(function ($v){
+                        $resources = [];
+                        foreach($v as $key => $value){
+                            $resources[$key] = $v[$key];
+                            unset($v[$key]);
+                        }
+                    })
+            ->end()
+        ;*/
+        
+        $rootNode
+            ->children()
+            ->append($this->createResourcesNode())
+            ->end();
+        
+        return $treeBuilder;
+    }
+    
+    private function createResourcesNode()
+    {
+        $builder = new TreeBuilder();
+        $node = $builder->root('resources');
+        $node
+            ->useAttributeAsKey('name')
+            ->prototype('array')
+            ->children()
+            ->arrayNode('items')
+            ->prototype('scalar')->end()
+            ->end()
+            ->scalarNode('class')
+            ->defaultValue(null)
+            ->end()
+            ->end()
+            ->end();
+        
+        return $node;
+    }
 }

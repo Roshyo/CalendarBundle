@@ -2,3 +2,26 @@ services:
 #    Roshyo_planning.example:
 #        class: Roshyo\PlanningBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    rosh_planning.datetime_modifier:
+        class: Roshyo\PlanningBundle\Services\DateTimeModifierService
+        public: true
+        arguments: ['@service_container']
+        calls:
+            - [ setup ]
+
+    rosh_planning.resource_handler:
+        class: Roshyo\PlanningBundle\Services\ResourceHandlerService
+        public: true
+        arguments: ['@service_container']
+
+    rosh_planning.item_handler:
+        class: Roshyo\PlanningBundle\Services\ItemHandlerService
+        public: true
+    employee.item_validator:
+        class: Roshyo\PlanningBundle\Validator\ItemValidator
+        public: true
+        calls:
+            - ["setContainer", ["@service_container"]]
+            - ["setTranslator", ["@translator"]]
+        tags:
+            - { name: validator.constraint_validator }

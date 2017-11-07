@@ -14,30 +14,30 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  */
 class RoshyoPlanningExtension extends Extension
 {
-	/** @var  array */
-	private $resources;
-	
-	/**
-	 * {@inheritdoc}
-	 */
-	public function load(array $configs, ContainerBuilder $container)
-	{
-		$configuration = new Configuration();
-		$config = $this->processConfiguration($configuration, $configs);
-		
-		$resources = [];
-		foreach($config['resources'] as $resourceName => $resource){
-			/** @var \Roshyo\PlanningBundle\Calendar\Resources\Resource $resourceObject */
-			$resourceObject = new $resource['class'];
-			foreach($resource['items'] as $item){
-				$resourceObject->addItemClass($item);
-			}
-			$resources[$resourceName] = $resourceObject;
-		}
-		
-		$this->resources = $resources;
-		
-		$loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-		$loader->load('services.yml');
-	}
+    /** @var  array */
+    private $resources;
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function load(array $configs, ContainerBuilder $container)
+    {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        
+        $resources = [];
+        foreach($config['resources'] as $resourceName => $resource){
+            /** @var \Roshyo\PlanningBundle\Calendar\Resources\Resource $resourceObject */
+            $resourceObject = new $resource['class'];
+            foreach($resource['items'] as $item){
+                $resourceObject->addItemClass($item);
+            }
+            $resources[$resourceName] = $resourceObject;
+        }
+        
+        $this->resources = $resources;
+        
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
+    }
 }

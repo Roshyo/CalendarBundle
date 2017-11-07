@@ -1,0 +1,4 @@
+front:
+    item:
+        error:
+            conflict: "Erreur : Les dates de cet élément entrent en conflit avec un autre élément déjà existant."
